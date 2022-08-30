@@ -11,7 +11,7 @@ void setup() {
   pinMode(lightPin, INPUT);
   pinMode(led2,OUTPUT);
   
-  Serial.begin(9600); //begin 设置波特率
+  Serial.begin(9600);
   Serial1.begin(9600); // Bluetooth module
 }
 
@@ -19,7 +19,7 @@ void setup() {
 // tx: translate msg
 
 void loop() {
-  int val = analogRead(soilPin); //ana: 电压->数字 0～1024
+  int val = analogRead(soilPin); 
   int light = analogRead(lightPin);
   
   Serial.print("Soil : ");
@@ -27,7 +27,7 @@ void loop() {
   Serial1.print("Soil : ");
   Serial1.print(val);Serial.print(" "); Serial1.print("lightPin : "); Serial1.println(light);
   
-  if(Serial1.available()){ //如果蓝牙有数据执行下面操作
+  if(Serial1.available()){ //if bluetooth works, continue the following 
         String myString;
         //myString = Serial1.readStringUntil('\n');
         myString = Serial1.readString();
@@ -60,7 +60,6 @@ void loop() {
   analogWrite(led, 0);
   }
   delay(100);
-  //analogWrite：模拟量的输出
   delay(1000);
  
 }
