@@ -5,7 +5,7 @@ const int soilPin = 16;
 const int lightPin = 17;
 
 void setup() {
-  pinMode(led, OUTPUT); // pinmode：数据的流入流出
+  pinMode(led, OUTPUT); 
   pinMode(beep, OUTPUT);
   pinMode(soilPin, INPUT);
   pinMode(lightPin, INPUT);
@@ -23,25 +23,19 @@ void loop() {
   int light = analogRead(lightPin);
   
   Serial.print("Soil : ");
-  Serial.print(val);Serial.print(" "); Serial.print("lightPin : "); Serial.println(light);//println：换行
+  Serial.print(val);Serial.print(" "); Serial.print("lightPin : "); Serial.println(light);
   Serial1.print("Soil : ");
   Serial1.print(val);Serial.print(" "); Serial1.print("lightPin : "); Serial1.println(light);
   
   if(Serial1.available()){ //if bluetooth works, continue the following 
         String myString;
-        //myString = Serial1.readStringUntil('\n');
         myString = Serial1.readString();
         Serial.println("    ");
         Serial.println(myString);
         Serial.println("    ");
-        //if(myString=="LED-ON\n"){
-          //delay(200);
-          digitalWrite(led2,HIGH);
-          //delay(200);
-        //}//open LED
-        //if(myString=="LED-OFF"){
-        //}
-  }else
+        digitalWrite(led2,HIGH);
+  }
+  else
   {
     digitalWrite(led2,LOW);
   }
